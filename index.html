@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+    
+    <form action="">
+        <div class="base">
+            <h1>Age calculator</h1>
+        </div>
+        <div class="all-input">
+            <div class="block">
+                <p>Date</p>
+                <input type="text" id="date" required minlength="1" maxlength="2" placeholder="inter your B-date">
+            </div>
+            <div class="block">
+                <p class="title">Month</p>
+                <input type="text" id="month" placeholder="inter your B-month" required="required" minlength="1" maxlength="2">
+            </div>
+            <div class="block">
+                <p>Year</p>
+                <input type="text" name="year" id="year" placeholder="inter your B-year" required minlength="4" maxlength="4">
+            </div>
+            <div class="center">
+                <input type="button" name="submit" value="Submit" onclick="Age()">
+            </div>
+        </div>
+       
+            
+       
+         <div class="base">
+            <h1 id="id"></h1>
+         </div>
+    </form>
+
+   </div>
+
+
+   <script>
+    function Age(){
+        let d1 = document.getElementById('date').value;
+        let m1 = document.getElementById('month').value;
+        let y1 = document.getElementById('year').value;
+
+
+        let date =new Date();
+        let d2 = date.getDate();
+        let m2 = 1 + date.getMonth();
+        let y2 = date.getFullYear();
+        let month = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+
+        if(d1 > d2){
+            d2 = d2 + month[m2 - 1]
+            m2 = m2 - 1;
+        }
+        if(m1 > m2){
+            m2 = m2 +12;
+            y2 = y2 - 1;
+        }
+        var d = d2 - d1;
+        var m = m2 - m1;
+        var y = y2 - y1;
+
+        document.getElementById('id').innerHTML = `Your Age is ${y} year ${m} Months ${d} Days`
+    }
+   </script>
+</body>
+</html>
